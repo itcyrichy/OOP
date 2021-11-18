@@ -17,11 +17,11 @@ print(Bob)
 
 class Bird(Animal):
     def __init__(self,kind,weight,age,food,size):
-        super().__init__(self,kind,weight,age,food)
+        super().__init__(kind,weight,age,food)
         self.size=size
     def count_some_index(self):
-        self.weight * self.size
+        return self.weight * self.size
 
 Lilo = Bird('owl',2,0.5,'mice',3)
-print(Bird)
-print(Bird.count_some_index())
+print(Lilo)
+print(Lilo.count_some_index())
