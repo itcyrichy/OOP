@@ -38,85 +38,236 @@ class Fool:
         # else:
         #     print('Too many players, game\'s impossible. Set another ammount of players')
         # self.deck = self.deck[k:]
+    def move(self,player_number):
+        if str(player_number)=='1':
+            print(self.pl1, f'Козырь: {self.trump_card}')
+            card1 = input('Выберите карту: ')
+            self.bita.append(self.pl1.pop(int(card1)))
 
-    # def dealing_out_a_deck(self):
-f = Fool(3)
-if f.n_players > 6 or f.n_players < 1:
-    print('Выберите кол-во игроков от 1-го до 6')
-else:
-    k = 0
-    for i in range(1,f.n_players+1):
-        setattr(Fool,'pl'+str(i),f.deck[k:i*6])
-        k+=6
-f.deck = f.deck[k:]
-print(f.pl1,'\n',f.pl2,'\n',f.pl3,'\n',f.deck)
+        elif str(player_number) == '2':
+            print(self.pl2, f'Козырь: {self.trump_card}')
+            card2 = input('Выберите карту: ')
+            self.bita.append(self.pl2.pop(int(card2)))
+
+        elif str(player_number) == '3':
+            print(self.pl3, f'Козырь: {self.trump_card}')
+            card3 = input('Выберите карту: ')
+            self.bita.append(self.pl3.pop(int(card3)))
+
+        elif str(player_number) == '4':
+            print(self.pl4, f'Козырь: {self.trump_card}')
+            card4 = input('Выберите карту: ')
+            self.bita.append(self.pl4.pop(int(card4)))
+
+        elif str(player_number) == '5':
+            print(self.pl5, f'Козырь: {self.trump_card}')
+            card5 = input('Выберите карту: ')
+            self.bita.append(self.pl5.pop(int(card5)))
+
+        elif str(player_number) == '6':
+            print(self.pl6, f'Козырь: {self.trump_card}')
+            card6 = input('Выберите карту: ')
+            self.bita.append(self.pl6.pop(int(card6)))
+
+        else:
+            print('Неверное кол-во игроков')
+
+    def looser(self,player_number):
+        if str(player_number) == '1':
+            self.pl1 = self.pl1 + self.bita
+
+        elif str(player_number) == '2':
+            self.pl2 = self.pl2 + self.bita
+
+        elif str(player_number) == '3':
+            self.pl3 = self.pl3 + self.bita
+
+        elif str(player_number) == '4':
+            self.pl4 = self.pl4 + self.bita
+
+        elif str(player_number) == '5':
+            self.pl5 = self.pl5 + self.bita
+
+        elif str(player_number) == '6':
+            self.pl6 = self.pl6+self.bita
+
+    def lucky(self):
+        self.out_of_game = self.bita
+        self.bita = []
+
+    def take_cards(self,player,num_of_cards):
+        for i in range(1,num_of_cards+1):
+            player.append(self.deck[-i])
+
+        self.deck = self.deck[:-num_of_cards]
+        print(player)
+
+
+
+        # def dealing_out_a_deck(self):
+# f = Fool(3)
+# if f.n_players > 6 or f.n_players < 1:
+#     print('Выберите кол-во игроков от 1-го до 6')
+# else:
+#     k = 0
+#     for i in range(1,f.n_players+1):
+#         setattr(Fool,'pl'+str(i),f.deck[k:i*6])
+#         k+=6
+# f.deck = f.deck[k:]
+# f.bita = []
+# f.out_of_game = []
+# print(f.pl1,'\n',f.pl2,'\n',f.pl3,'\n',f.deck)
 
 
 
 
-def real_round(self):
-    bita=[]
-    print(self.pl1,f'Козырь: {self.trump_card}')
-    card1 = input('Выберите карту: ')
-    bita.append(self.pl1.pop(int(card1)))
+# def real_round(self):
+#     bita=[]
+#     print(self.pl1,f'Козырь: {self.trump_card}')
+#     card1 = input('Выберите карту: ')
+#     bita.append(self.pl1.pop(int(card1)))
+#
+#     print(self.pl2,f'Козырь: {self.trump_card}')
+#     card2 = input('Выберите карту или заберите ("забрать"): ')
+#     if card2 == 'забрать':
+#         self.pl2=self.pl2+bita
+#     else:
+#         bita = bita + self.pl2.pop(int(card2))
+#     try:
+#         print(self.pl3,f'Козырь: {self.trump_card}')
+#         card3 = input('Выберите карту или заберите ("забрать"): ')
+#         if card3 == 'забрать':
+#             self.pl3 = self.pl3 + bita
+#         else:
+#             bita = bita + self.pl3.pop(int(card3))
+#     except:
+#         pass
+#
+#     try:
+#         print(self.pl4,f'Козырь: {self.trump_card}')
+#         card4 = input('Выберите карту или заберите ("забрать"): ')
+#         if card4 == 'забрать':
+#             self.pl4 = self.pl4 + bita
+#         elif card4 == 'пасс':
+#             pass
+#         else:
+#             bita = bita + self.pl4.pop(int(card4))
+#     except:
+#         pass
+#
+#     try:
+#         print(self.pl5,print(f'Козырь: {self.trump_card}'))
+#         card5 = input('Выберите карту или заберите ("забрать"): ')
+#         if card5 == 'забрать':
+#             self.pl5 = self.pl5 + bita
+#         elif card5 == 'пасс':
+#             pass
+#         else:
+#             bita = bita + self.pl5.pop(int(card5))
+#     except:
+#         pass
+#
+#     try:
+#         print(self.pl6,print(f'Козырь: {self.trump_card}'))
+#         card6 = input('Выберите карту или заберите ("забрать"): ')
+#         if card6 == 'забрать':
+#             self.pl6 = self.pl6 + bita
+#         elif card6 == 'пасс':
+#             pass
+#         else:
+#             bita = bita + self.pl6.pop(int(card6))
+#     except:
+#         pass
 
-    print(self.pl2,f'Козырь: {self.trump_card}')
-    card2 = input('Выберите карту или заберите ("забрать"): ')
-    if card2 == 'забрать':
-        self.pl2=self.pl2+bita
+
+
+
+# f.rround = types.MethodType(real_round, f)
+
+# f.rround()
+#
+# print(f.pl1,'\n',f.pl2,'\n',f.pl3)
+#
+# f.move(1)
+# f.looser(2)
+# print(f.pl1,f.pl2)
+# print(f.deck)
+# f.take_cards(f.pl1,3)
+# print(f.deck)
+
+def play(n_players=5):
+    n_players = int(input('Введите кол-во игроков: '))
+    f = Fool(n_players)
+    no_fool = True
+    while f.n_players > 6 or f.n_players < 1:
+        print('Выберите кол-во игроков от 1-го до 6: ')
+        n_players = int(input('Введите кол-во игроков: '))
     else:
-        bita = bita + self.pl2.pop(int(card2))
-    try:
-        print(self.pl3,f'Козырь: {self.trump_card}')
-        card3 = input('Выберите карту или заберите ("забрать"): ')
-        if card3 == 'забрать':
-            self.pl3 = self.pl3 + bita
+        k = 0
+        for i in range(1, f.n_players + 1):
+            setattr(Fool, 'pl' + str(i), f.deck[k:i * 6])
+            k += 6
+    f.deck = f.deck[k:]
+    f.bita = []
+    f.out_of_game = []
+    while no_fool:
+        action = input('Введите действие (ход/бита/снял/взять карту/обстановка): ')
+        if action == 'ход':
+            try:
+                f.move(input('Введите номер игрока (от 1 до 6): '))
+            except:
+                print('Неверно указан номер игрока')
+        elif action == 'бита':
+            f.lucky()
+        elif action == 'обстановка':
+            for i in range(1, f.n_players + 1):
+                if hasattr(f, 'pl' + str(i)):
+                    print(getattr(f, 'pl' + str(i)),'\n')
+            print(len(f.deck),'\n')
+            print(f.out_of_game)
+            print(f.bita)
+
+
+        elif action == 'снял':
+            try:
+                f.looser(input('Введите номер игрока (от 1 до 6): '))
+                f.lucky()
+            except:
+                print('Неверно указан номер игрока')
+        elif action == 'взять карту':
+            action2 = input('Введите номер игрока (от 1 до 6): ')
+            try:
+                if str(action2) == '1':
+                    player = f.pl1
+                elif str(action2) == '2':
+                    player = f.pl2
+                elif str(action2) == '3':
+                    player = f.pl3
+                elif str(action2) == '4':
+                    player = f.pl4
+                elif str(action2) == '5':
+                    player = f.pl5
+                elif str(action2) == '6':
+                    player = f.pl6
+                num = int(input('Введите кол-во карт: '))
+                f.take_cards(player,num)
+            except:
+                print('Неправильно введен номер игрока')
+
+
         else:
-            bita = bita + self.pl3.pop(int(card3))
-    except:
-        pass
-
-    try:
-        print(self.pl4,f'Козырь: {self.trump_card}')
-        card4 = input('Выберите карту или заберите ("забрать"): ')
-        if card4 == 'забрать':
-            self.pl4 = self.pl4 + bita
-        elif card4 == 'пасс':
-            pass
+            print('Ничего не понимаю, неправильная команда')
+        checker = []
+        for i in range(1,f.n_players+1):
+            if hasattr(f, 'pl'+str(i)):
+                if len(getattr(f,'pl'+str(i))) > 0:
+                    checker.append(1)
+        if len(f.deck)>0:
+            checker.append(1)
+        if sum(checker)>1:
+            no_fool = True
         else:
-            bita = bita + self.pl4.pop(int(card4))
-    except:
-        pass
+            no_fool = False
+    print('Игра завершена')
 
-    try:
-        print(self.pl5,print(f'Козырь: {self.trump_card}'))
-        card5 = input('Выберите карту или заберите ("забрать"): ')
-        if card5 == 'забрать':
-            self.pl5 = self.pl5 + bita
-        elif card5 == 'пасс':
-            pass
-        else:
-            bita = bita + self.pl5.pop(int(card5))
-    except:
-        pass
-
-    try:
-        print(self.pl6,print(f'Козырь: {self.trump_card}'))
-        card6 = input('Выберите карту или заберите ("забрать"): ')
-        if card6 == 'забрать':
-            self.pl6 = self.pl6 + bita
-        elif card6 == 'пасс':
-            pass
-        else:
-            bita = bita + self.pl6.pop(int(card6))
-    except:
-        pass
-
-
-
-
-f.rround = types.MethodType(real_round, f)
-
-f.rround()
-
-print(f.pl1,'\n',f.pl2,'\n',f.pl3)
+play()
